@@ -135,17 +135,7 @@ $Properties = [array](
         'Expression' = {
             [string] $_.'Average'.ToString($Formatting)
         }
-    } +
-    $(
-        foreach ($Index in [byte[]](0 .. $(if($Decimals -le $ShowXResultsInOutput){$Decimals}else{$ShowXResultsInOutput}))) {        
-            @{
-                'Name'       = 'Test{0}' -f $Index
-                'Expression' = {
-                    [string] $_.'Tests'[$Index].ToString($Formatting)
-                }
-            }
-        }
-    )
+    }
 )
 $Results | Sort-Object -Property 'Domain','Average' | Select-Object -Property $Properties | Format-Table -AutoSize
 
